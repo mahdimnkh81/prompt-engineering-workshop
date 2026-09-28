@@ -36,7 +36,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Which prompt best applies all four scene-setting elements to this hiring task? Correct answer: Act as a technical recruiter; address Python backend candidates; use a professional, welcoming tone; write three short paragraphs including a concrete project example and an application CTA.. Never use model self-confidence as proof of correctness.
 
-## Slide 10 — Few-shot examples
+## Slide 10 — Few-shot examples: Content Moderation & PII
 
 First 4 minutes of 00:30–00:50: explain the concept, then demonstrate the next slide. Source PDF pages 3. Ask a participant to name one likely failure mode.
 
@@ -50,7 +50,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 13 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What makes few-shot examples useful? Correct answer: They demonstrate the intended mapping and consistent format.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is it important to use few-shot examples for edge cases like PII or medical advice? Correct answer: They demonstrate exactly how to format the fallback response without processing the sensitive data.. Never use model self-confidence as proof of correctness.
 
 ## Slide 14 — Decomposition and verification
 

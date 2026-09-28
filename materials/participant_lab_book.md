@@ -19,11 +19,13 @@ Define role, audience, tone, and format explicitly so the model does not have to
 - Tone (20): explicitly requests an engaging, professional, welcoming, accessible tone and avoids unexplained jargon.
 - Format (40): specifies a clear structure or paragraph plan (20 points) AND explicitly requests a relevant example or analogy (20 points). Without that request, award at most 20/40; naming the word format alone earns no credit.
 
-## Lab 2: Few-shot examples (20 minutes)
+## Lab 2: Few-shot examples: Content Moderation & PII (20 minutes)
 
-Show consistent input/output examples to teach a pattern. Test the pattern on new inputs, including an edge case.
+Show consistent input/output examples to teach a pattern, specifically for handling edge cases like PII and safety.
 
-**Task.** Write a ticket-title prompt containing 2–4 input/output examples. Require [Area] Description titles of at most 60 characters. Include these test inputs: PDF uploads over 10MB crash on iPhone; Google login fails on Safari; CSV export stops after 100 rows. Request a JSON array of three titles in that order. Submit the prompt, not the final titles.
+**Task.** Your company is an online pharmacy. You need an AI to summarize long user reviews into a single short sentence. However, there are two legal edge cases: 1. Users sometimes include PII like phone numbers or national IDs. 2. Users ask for medical advice (e.g., "Does this interact with aspirin?"). If published, the company faces fines.
+
+Write a few-shot prompt that summarizes safe reviews into one sentence, but uses at least two edge-case examples to teach the model to return ONLY the tag [FLAG_PII] if personal info is present, and ONLY the tag [FLAG_MEDICAL] if medical advice is requested, without generating any summary. Do not write the final reviews, just the instructions and examples.
 
 **Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
 
@@ -31,10 +33,10 @@ Show consistent input/output examples to teach a pattern. Test the pattern on ne
 
 **AI rubric (task-specific weights):**
 
-- Includes 2–4 relevant input/output examples.
-- Examples consistently demonstrate [Area] Description and the 60-character limit.
-- Includes all three test inputs with important details, separated from examples.
-- Requests a JSON array of three titles in input order while preserving key details.
+- PII Example (20 points): The prompt must include a distinct example demonstrating the PII rule (e.g., phone number or national ID).
+- Medical Example (20 points): The prompt must include a distinct example demonstrating the medical advice rule.
+- Processing Prevention (40 points): In the edge-case examples, the model must be shown returning ONLY the fallback tag ([FLAG_PII] or [FLAG_MEDICAL]) without any accompanying summary or processing of the sensitive text.
+- Instruction Clarity (20 points): The initial instructions clearly explain the rules for both safe reviews and edge cases, and align perfectly with the behavior demonstrated in the examples.
 
 ## Lab 3: Decomposition and verification (20 minutes)
 
