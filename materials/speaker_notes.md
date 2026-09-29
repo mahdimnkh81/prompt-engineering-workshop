@@ -52,7 +52,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is it important to use few-shot examples for edge cases like PII or medical advice? Correct answer: They demonstrate exactly how to format the fallback response without processing the sensitive data.. Never use model self-confidence as proof of correctness.
 
-## Slide 14 — Decomposition and verification
+## Slide 14 — Chain-of-thought (CoT): Multi-step Debugging
 
 First 4 minutes of 00:50–01:10: explain the concept, then demonstrate the next slide. Source PDF pages 3–4. Ask a participant to name one likely failure mode.
 
@@ -66,9 +66,9 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 17 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the strongest verification of this calculation? Correct answer: Recompute the quantities and discount independently in Python.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is Chain-of-thought (CoT) crucial for analyzing server logs? Correct answer: It forces the model to methodically analyze errors rather than jumping to false conclusions based on superficial warnings.. Never use model self-confidence as proof of correctness.
 
-## Slide 18 — Structured output and grounding
+## Slide 18 — Structured output: Relational JSON Shape
 
 First 4 minutes of 01:10–01:30: explain the concept, then demonstrate the next slide. Source PDF pages 4. Ask a participant to name one likely failure mode.
 
@@ -82,13 +82,13 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 21 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What should the model return for an unknown price? Correct answer: null, as required by the schema.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the most reliable way to enforce a complex relational JSON structure? Correct answer: Provide an explicit visual template/shape of the JSON structure including brackets, keys, and comments for relationships.. Never use model self-confidence as proof of correctness.
 
 ## Slide 22 — Break · 10 minutes
 
 01:30–01:40. Preserve the break. Use the dashboard to identify participants needing help.
 
-## Slide 23 — Constraints and iterative refinement
+## Slide 23 — Tone control (Pure Negative Constraints)
 
 First 3 minutes of 01:40–01:55: explain the concept, then demonstrate the next slide. Source PDF pages 5. Ask a participant to name one likely failure mode.
 
@@ -102,7 +102,7 @@ Practice for 7 minutes. Submit your prompt and the concept answer on your own pa
 
 ## Slide 26 — Check, discuss, improve
 
-Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Which follow-up is most actionable? Correct answer: Use two factual sentences and include Google Calendar.. Never use model self-confidence as proof of correctness.
+Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the most effective way to prevent the AI from using dramatic tone or personal bias? Correct answer: Use strict negative constraints (e.g., "Absolutely do not use dramatic adjectives or personal analysis").. Never use model self-confidence as proof of correctness.
 
 ## Slide 27 — Interview-style prompting
 
@@ -118,7 +118,7 @@ Practice for 7 minutes. Submit your prompt and the concept answer on your own pa
 
 ## Slide 30 — Check, discuss, improve
 
-Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: When is an interview most useful? Correct answer: When important requirements are missing or ambiguous.. Never use model self-confidence as proof of correctness.
+Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is the "ask exactly one question at a time" rule important in an interview prompt? Correct answer: To prevent the AI from dumping 20 questions on you at once in a single message.. Never use model self-confidence as proof of correctness.
 
 ## Slide 31 — Roles, chaining, and self-evaluation
 
@@ -134,7 +134,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 34 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: How should a model self-critique be used? Correct answer: As feedback to verify against a separate rubric or checks.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why should you specify exact metrics (like "Error Handling") in a self-critique prompt? Correct answer: If you just say "critique this", the AI won't know what angle to analyze from and will give generic feedback.. Never use model self-confidence as proof of correctness.
 
 ## Slide 35 — Capstone: evidence over impressions
 

@@ -85,9 +85,19 @@ if user['role']=='instructor':
     with history:
         st.download_button('Download all submissions and scores (CSV)',storage.export_csv(token),'workshop_results.csv','text/csv')
         if rows:
-            selected=st.selectbox('Inspect an attempt', [r['id'] for r in rows])
+            def format_attempt(aid):
+                r = next(row for row in rows if row['id'] == aid)
+                return f"{r['user_id']} — Lab {r['task_id']} — Score: {r['total']} ({r['status']})"
+            selected=st.selectbox('Inspect an attempt', [r['id'] for r in rows], format_func=format_attempt)
             row=next(r for r in rows if r['id']==selected)
             st.code(row['prompt'],language=None)
+            c1, c2, _ = st.columns([1, 1, 4])
+            if c1.button('Force Pass', key=f"pass_{row['id']}"):
+                storage.override_attempt_status(token, row['id'], 'passed')
+                st.rerun()
+            if c2.button('Force Retry', key=f"retry_{row['id']}"):
+                storage.override_attempt_status(token, row['id'], 'revise')
+                st.rerun()
             st.json(json.loads(row['automatic']))
         if rows:st.dataframe([{k:r[k] for k in ['id','user_id','task_id','status','auto_score','total','created']} for r in rows],hide_index=True)
 else:
@@ -102,6 +112,11 @@ else:
     task=TASKS[task_id-1]
     st.subheader(task['title']);st.caption(f"{task['minutes']} minutes · Source PDF pages {task['pages']}")
     st.write(task['concept']);st.info(task['ai_brief'])
+    if 'ai_brief_fa' in task:
+        html_fa = f"""<div dir="rtl" style="text-align: right; direction: rtl; padding: 1em; border-radius: 0.5em; background-color: rgba(43, 153, 56, 0.15); border: 1px solid rgba(43, 153, 56, 0.3); margin-bottom: 1rem;">
+        <strong>🇮🇷 ترجمه سناریو:</strong><br><br>{task['ai_brief_fa']}
+        </div>"""
+        st.markdown(html_fa, unsafe_allow_html=True)
     with st.expander('Prompt evaluation criteria'):
         for criterion,maximum in zip(task['ai_rubric'],task['ai_weights']):st.write('• '+criterion+f' (maximum {maximum} points)')
         st.write('The model grades your prompt out of 100. Score at least 70 and answer the concept question correctly to unlock the next lab.')

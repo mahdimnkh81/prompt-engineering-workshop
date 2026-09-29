@@ -138,3 +138,8 @@ def submit_prompt(token,task_id,prompt,quiz=None):
         require_participant(token,task_id,c)
         return c.execute('INSERT INTO attempts(user_id,task_id,prompt,artifact,reflection,automatic,auto_score,status,rubric,feedback,total,created,reviewed,quiz) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
             (user,task_id,prompt,'','',json.dumps(result,ensure_ascii=False),total,'passed' if total>=PASS_SCORE and result['quiz']['correct'] else 'revise',json.dumps([r['score'] for r in result['criteria']]),result['summary'],total,now,now,quiz)).lastrowid
+
+def override_attempt_status(token, attempt_id, status):
+    if identity(token)['role'] != 'instructor': raise PermissionError('Instructor access required.')
+    with connect() as c:
+        c.execute('UPDATE attempts SET status=? WHERE id=?', (status, attempt_id))

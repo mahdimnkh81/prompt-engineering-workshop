@@ -54,7 +54,7 @@ slide('Common failures → useful repairs','Vague task → define audience, purp
 slide('Transfer the technique to your work','Writing: audience + purpose + CTA + length.\nCode: relevant code + error + one focused change + tests.\nData: source facts + schema + unknown-value policy.\nResearch: alternatives + evidence + uncertainty.',note='02:53–02:56. Source p8. Invite two participants to show a before/after example. Model-generated citations and APIs need independent verification.',size=27)
 slide('Keep a prompt journal','Save the prompt, model/settings, test cases, and results.\nRecord one failed case and the change that helped.\nNext week: reuse one pattern on a recurring task.\nDownload your journal from your workspace.',note='02:56–03:00. Source p9. Ask for one specific next action. Point to source PDF and provider-specific documentation; controls such as temperature differ between models.',size=27)
 prs.save(OUT/'prompt_engineering_3_hour_workshop.pptx')
-(OUT/'speaker_notes.md').write_text('# Speaker notes\n\n'+ '\n'.join(notes))
+(OUT/'speaker_notes.md').write_text('# Speaker notes\n\n'+ '\n'.join(notes), encoding='utf-8')
 agenda='\n'.join(f'| {time} | {mins} | {title} |' for time,mins,title in AGENDA)
 (OUT/'facilitator_guide.md').write_text("""# Facilitator guide — AI prompt assessment
 
@@ -85,9 +85,9 @@ Use each lab's teaching, practice, and retry allocations in the slide notes. Dur
 ## Source mapping
 
 Labs 1–8 map to PDF pages 1–3, 3, 3–4, 4, 5, 5–6, 6–7, and 7–9. The source's unsupported 80% claim is omitted. Verification is taught through concise checkable calculations. Participant code is never executed by the server.
-""")
+""", encoding='utf-8')
 handout=['# Participant lab book\n\nUse your own workspace. Submit your prompt and answer the three-option concept question. The AI evaluator scores four weighted criteria totaling 100; at least 70/100 plus a correct concept answer unlocks the next lab. You may retry.\n']
 for t in TASKS:
     handout.append(f"## Lab {t['id']}: {t['title']} ({t['minutes']} minutes)\n\n{t['concept']}\n\n**Task.** {t['brief']}\n\n**Submit.** {t['artifact']}\n\n**After feedback.** Read the scores, evidence, and suggestions. Revise your prompt and retry when below 70.\n\n**AI rubric (task-specific weights):**\n\n"+'\n'.join('- '+x for x in t['ai_rubric'])+'\n')
-(OUT/'participant_lab_book.md').write_text('\n'.join(handout))
+(OUT/'participant_lab_book.md').write_text('\n'.join(handout), encoding='utf-8')
 print(f'Created {len(prs.slides)} slides and workshop handouts.')

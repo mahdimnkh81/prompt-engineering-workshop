@@ -38,28 +38,11 @@ Write a few-shot prompt that summarizes safe reviews into one sentence, but uses
 - Processing Prevention (40 points): In the edge-case examples, the model must be shown returning ONLY the fallback tag ([FLAG_PII] or [FLAG_MEDICAL]) without any accompanying summary or processing of the sensitive text.
 - Instruction Clarity (20 points): The initial instructions clearly explain the rules for both safe reviews and edge cases, and align perfectly with the behavior demonstrated in the examples.
 
-## Lab 3: Decomposition and verification (20 minutes)
+## Lab 3: Chain-of-thought (CoT): Multi-step Debugging (20 minutes)
 
-Break a problem into checkable intermediate results. Request a concise calculation summary and verify it with Python; verbose reasoning is not proof.
+Ask the model to reason step by step before giving the final answer. Reduces errors on logic, math, multi-step planning, and debugging.
 
-**Task.** Write a prompt for buying 3 pens at $2 each and 2 notebooks at $5 each with a 10% discount. Request numeric JSON fields subtotal, discount, and total. Specify the calculation stages and an independent verification step. Do not assume tax or extra fees. Submit instructions, not the numerical answer.
-
-**Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
-
-**After feedback.** Read the scores, evidence, and suggestions. Revise your prompt and retry when below 70.
-
-**AI rubric (task-specific weights):**
-
-- Includes accurate prices, quantities, and discount rate.
-- Clearly specifies subtotal, discount, and total calculation stages.
-- Defines a numeric JSON contract with the three exact keys.
-- Requests independent verification and forbids extra cost assumptions.
-
-## Lab 4: Structured output and grounding (20 minutes)
-
-A requested JSON shape still needs parsing, schema checks, and factual validation. Missing information should remain unknown.
-
-**Task.** Write a prompt to convert these facts to JSON: OurApp costs $12/month with email support; TeamFlow costs $18/month with chat support; SoloDesk has an unknown price and community support. Require a products array in that order, with name, price_usd, and support. Use null for the unknown price and only the supplied facts. Submit the prompt, not the resulting JSON.
+**Task.** You are a developer whose site just crashed. You have a 50-line error log. If you ask an AI "what is the problem?", it often jumps to the first superficial warning it sees and gives a wrong solution, wasting hours. Write a prompt using the Chain-of-thought technique to force the AI to logically dissect the logs step-by-step before providing a final solution. Do not include the actual log; just write the prompt instructions.
 
 **Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
 
@@ -67,16 +50,16 @@ A requested JSON shape still needs parsing, schema checks, and factual validatio
 
 **AI rubric (task-specific weights):**
 
-- Includes all facts about the three products without contradictions.
-- Defines products, name, price_usd, support, and their data types.
-- Requires null for unknown prices and forbids invented facts.
-- Specifies JSON only, product order, and output validation.
+- Prevent jumping to answer (30 points): Explicitly requests the model to not provide the final answer or solution immediately.
+- Log analysis step (20 points): Instructs the model to first find and list the critical or fatal errors.
+- Deduction step (20 points): Instructs the model to deduce the root cause from the found errors before giving a final single actionable solution.
+- CoT Keywords (30 points): Uses explicit phrases like "Think step by step" or "Show your reasoning steps".
 
-## Lab 5: Constraints and iterative refinement (15 minutes)
+## Lab 4: Structured output: Relational JSON Shape (20 minutes)
 
-Turn a vague critique into a concrete revision request. Compare the new result against the original requirements.
+Use visual structural shapes in your prompt to enforce strict output formats. Define foreign keys explicitly in the JSON shape.
 
-**Task.** Write a revision prompt and include this original draft: “Welcome! Smart scheduling is revolutionary. It fixes every meeting problem. Buy now!” Require exactly two factual sentences, at most 50 words, mentioning Google Calendar. Ban Welcome, revolutionary, and Buy now. Identify the original defects and specify how to check the revision. Submit only the revision instructions.
+**Task.** You have a transcript of a business meeting: "Ali, prepare the financial report by tomorrow. Sara, set up a meeting with the marketing team." Your project management backend requires a relational JSON structure where the "users" array and "tasks" array are separate, and tasks are linked to users via a foreign key ID. Write a prompt that extracts this information. You must explicitly draw the JSON shape in your prompt to show how to link the IDs (e.g., userId in users must match assignedTo in tasks). Do not provide the actual transcript, just the instructions.
 
 **Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
 
@@ -84,16 +67,33 @@ Turn a vague critique into a concrete revision request. Compare the new result a
 
 **AI rubric (task-specific weights):**
 
-- Includes the original draft and identifies concrete defects.
-- Explicitly requires exactly two sentences and at most 50 words.
-- Requires Google Calendar and excludes all three prohibited phrases.
-- Requests factual language, removal of unsupported claims, and a revision check.
+- Visual JSON Skeleton (25 points): Provides an explicit visual template of the JSON containing the arrays "users" and "tasks".
+- Strict Key Definition (25 points): The drawn template explicitly dictates the keys inside the objects (e.g. userId, name, taskDescription, deadline, assignedTo).
+- Linking logic (30 points): Clearly defines the relationship between the user ID and the task assignedTo field (e.g., via inline comments in the template).
+- Output restriction (20 points): Explicitly forbids any conversational text before or after the JSON.
+
+## Lab 5: Tone control (Pure Negative Constraints) (15 minutes)
+
+Simulate conversation (Iterative Refinement Flow) to fix model habits. If it outputs a bad tone, refine it iteratively instead of writing one perfect prompt.
+
+**Task.** You are the editor of a neutral corporate newsletter. You want the AI to summarize a sensitive news story (e.g., a stock drop or a competitive event). The problem is the AI loves dramatic words ("disaster", "shocking") and sometimes inserts personal bias. Write a prompt to summarize the news using at least 3 negative constraints (must nots) to ensure the text is completely neutral, unbiased, and free of exaggerated words. Do not provide the actual news text, just the instructions.
+
+**Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
+
+**After feedback.** Read the scores, evidence, and suggestions. Revise your prompt and retry when below 70.
+
+**AI rubric (task-specific weights):**
+
+- Assertiveness (25 points): Uses strong, unambiguous prohibitive language (e.g., "absolutely do not", "never").
+- Bans emotional language (25 points): Explicitly forbids the use of dramatic, emotional, or exaggerated adjectives.
+- Bans personal bias (25 points): Explicitly forbids personal opinions, analysis, or direct quotes.
+- Format restriction (25 points): Specifies a negative format constraint (e.g., "do not use bullet points").
 
 ## Lab 6: Interview-style prompting (15 minutes)
 
-Ask targeted questions to resolve uncertainty before drafting. State a stopping condition so the interview can finish.
+System Architecture Design (for Devs). Complex designs (like a ride-hailing DB schema) depend on volume, real-time needs, and budget. Instead of a direct prompt, have the AI interview you as an architect.
 
-**Task.** Write an interview prompt for an article about async standups. Resolve audience, tone, and product mentions. Ask one question at a time and wait for each answer. Define when to stop interviewing, confirm the brief, and start drafting. Do not run the interview or invent user answers.
+**Task.** You want a highly personalized cover letter for a "Product Manager" role. A direct prompt yields generic robotic text. You want the AI to act as a "Career Coach" and interview you about your real past experiences. Write a prompt that instructs the AI to read a job description [job description text], interview you one question at a time to extract exactly 3 matching accomplishments, and then write the final cover letter once it has enough data. Submit only the prompt instructions.
 
 **Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
 
@@ -101,16 +101,16 @@ Ask targeted questions to resolve uncertainty before drafting. State a stopping 
 
 **AI rubric (task-specific weights):**
 
-- Covers the article goal and missing audience, tone, and product policy.
-- Explicitly asks one question at a time and waits for an answer.
-- Defines a stopping condition and confirmation of the collected brief.
-- Drafting begins only after context is complete; user answers are not invented.
+- External Reference Context (30 points): Instructs the AI to base its questions on analyzing the provided job description.
+- Single Question Rule (30 points): Explicitly limits the AI to asking exactly one question at a time and waiting for a reply.
+- Stopping Condition Definition (20 points): Clearly defines when the interview should end (e.g., after collecting 3 matching accomplishments).
+- Final Action Trigger (20 points): Instructs the AI to state a completion phrase (e.g., "I have enough data") and then output the final cover letter.
 
 ## Lab 7: Roles, chaining, and self-evaluation (20 minutes)
 
-Persistent instructions define behavior; user messages define the current task. Split a workflow into stages with explicit handoffs and verify critiques.
+Code Self-Critique (for Developers). If the AI writes a script, it might miss edge cases. Force it to take a QA Role, evaluate its own code against a specific metric (e.g. Error Handling), and rewrite it.
 
-**Task.** Write a prompt or message sequence for an outline → draft → critique → revision workflow for a beginner Python KeyError guide. Separate persistent rules from the user task. Require three outline headings and at most 100 words each for draft and revision. Request JSON with outline, draft, critique, and revision. Define stage handoffs and accuracy checks. Do not execute the workflow.
+**Task.** You are a logistics AI startup founder writing a short pitch email to an investor. An AI will normally use annoying exaggerated words and a begging tone. You must design a Prompt Chain. You cannot use a one-shot prompt. In one of the stages, force the AI to evaluate and critique its own text (Self-evaluation) to ensure all promotional words and begging tone are removed. Submit the prompts you would type in each stage (you must specify what you say in the first stage, how you force the model to confess its flaws in the second, and how you wrap it up in the final stage).
 
 **Submit.** Only your prompt. The AI evaluator returns scores, evidence, and improvement advice.
 
@@ -118,10 +118,10 @@ Persistent instructions define behavior; user messages define the current task. 
 
 **AI rubric (task-specific weights):**
 
-- Separates persistent rules from the user request and requires technical accuracy.
-- Defines all four stages and how each output feeds the next.
-- Specifies the JSON contract, three headings, and both 100-word limits.
-- Critiques accuracy and clarity and requires the revision to address that critique.
+- Chain Separation (30 points): The participant clearly separates the workflow into 3 sequential prompts and does not combine them into one single request.
+- Evaluation Metric Creation (20 points): The critique stage invents a specific evaluation metric or method (e.g., scoring from 1-10).
+- Flaw Identification Mechanism (20 points): The critique stage forces the model to explicitly list out the specific flaws or banned words used.
+- Chain Connection (30 points): The final rewrite prompt explicitly commands the AI to use the results/flaws from its own critique.
 
 ## Lab 8: Capstone: evidence over impressions (20 minutes)
 
