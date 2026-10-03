@@ -110,17 +110,14 @@ else:
         for t in TASKS:st.write(('✓' if t['id'] in passed else '○' if t['id'] in available else '🔒')+f" {t['id']}. {t['title']}")
     task_id=st.selectbox('Choose an unlocked lab',available,index=len(available)-1,format_func=lambda n:f"Lab {n}: {TASKS[n-1]['title']}")
     task=TASKS[task_id-1]
-    st.subheader(task['title']);st.caption(f"{task['minutes']} minutes · Source PDF pages {task['pages']}")
-    st.write(task['concept']);st.info(task['ai_brief'])
+    st.subheader(task['title'])
+    if not task.get('hide_concept'):st.write(task['concept'])
+    st.info(task['ai_brief'])
     if 'ai_brief_fa' in task:
         html_fa = f"""<div dir="rtl" style="text-align: right; direction: rtl; padding: 1em; border-radius: 0.5em; background-color: rgba(43, 153, 56, 0.15); border: 1px solid rgba(43, 153, 56, 0.3); margin-bottom: 1rem;">
         <strong>🇮🇷 ترجمه سناریو:</strong><br><br>{task['ai_brief_fa']}
         </div>"""
         st.markdown(html_fa, unsafe_allow_html=True)
-    with st.expander('Prompt evaluation criteria'):
-        for criterion,maximum in zip(task['ai_rubric'],task['ai_weights']):st.write('• '+criterion+f' (maximum {maximum} points)')
-        st.write('The model grades your prompt out of 100. Score at least 70 and answer the concept question correctly to unlock the next lab.')
-    st.caption('Write your prompt and answer the concept question. Your prompt is sent to AvalAI for scores, evidence, and improvement advice in English.')
     draft=storage.get_draft(token,task_id)
     with st.form(f'lab_{task_id}'):
         prompt=st.text_area('Your prompt',value=draft.get('prompt',''),height=280,max_chars=20000,help='Submit instructions for the model, not the final answer. For example: Write an empathetic support reply under 100 words using the following facts…')

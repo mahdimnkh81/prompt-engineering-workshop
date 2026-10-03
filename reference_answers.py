@@ -49,6 +49,7 @@ ANSWERS = ['Act as a technical recruiter working with a Python engineering team.
  '  ]\n'
  '}\n'
  'Meeting transcript: [transcript]',
+
  'Summarize the following news for the corporate newsletter. Mandatory constraints: 1. Absolutely do not use dramatic or emotional adjectives (like shocking, unprecedented, or disaster). 2. Do not provide any personal opinion or analysis; state only the facts. 3. Never include direct quotes from people in the news. 4. Do not use any formatting other than a single simple paragraph (no bullet points).\nNews text: [text]',
 
  'I want to apply for the following job description [job description text] and need a highly engaging cover letter. Please act as a professional Career Coach. Do not write the letter yet! Instead, read the job description and interview me to find out which of my past skills match this job.\n\nAsk me exactly one question at a time (for example, about the biggest challenge I solved or tools I know).\nI will answer. Repeat this process.\nWhen you have found exactly 3 excellent examples of my accomplishments that match the company\'s needs, stop the interview, say "I have enough data", and then write the final cover letter with a professional but human tone.',

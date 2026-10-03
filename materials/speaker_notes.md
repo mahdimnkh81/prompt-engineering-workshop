@@ -34,7 +34,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 9 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Which prompt best applies all four scene-setting elements to this hiring task? Correct answer: Act as a technical recruiter; address Python backend candidates; use a professional, welcoming tone; write three short paragraphs including a concrete project example and an application CTA.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Do large language models remember your previous conversations? Correct answer: No. The model's weights do not change between chats; it only "knows" what is inside the current context window. Apps that seem to remember you are re-inserting saved notes into the prompt.. Never use model self-confidence as proof of correctness.
 
 ## Slide 10 — Few-shot examples: Content Moderation & PII
 
@@ -50,7 +50,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 13 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is it important to use few-shot examples for edge cases like PII or medical advice? Correct answer: They demonstrate exactly how to format the fallback response without processing the sensitive data.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: In a few-shot prompt for the pharmacy reviews, which design most reliably makes the model return ONLY [FLAG_PII] for a review containing a phone number? Correct answer: Include an example where a review with a phone number maps to exactly "[FLAG_PII]" and nothing else, keeping the same input/output format across all examples.. Never use model self-confidence as proof of correctness.
 
 ## Slide 14 — Chain-of-thought (CoT): Multi-step Debugging
 
@@ -66,7 +66,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 17 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is Chain-of-thought (CoT) crucial for analyzing server logs? Correct answer: It forces the model to methodically analyze errors rather than jumping to false conclusions based on superficial warnings.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why does asking the model to reason step by step before answering improve the analysis of a long error log? Correct answer: Each reasoning token it writes becomes part of the context, so the final answer is conditioned on the listed errors and deductions instead of the first salient warning.. Never use model self-confidence as proof of correctness.
 
 ## Slide 18 — Structured output: Relational JSON Shape
 
@@ -82,7 +82,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 21 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the most reliable way to enforce a complex relational JSON structure? Correct answer: Provide an explicit visual template/shape of the JSON structure including brackets, keys, and comments for relationships.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Your prompt includes a JSON skeleton where tasks[].assignedTo must match users[].userId. What is the main remaining risk and the best mitigation? Correct answer: The model can still invent or mismatch IDs or add text around the JSON; forbid extra text and validate in code that the JSON parses and every assignedTo exists in users.. Never use model self-confidence as proof of correctness.
 
 ## Slide 22 — Break · 10 minutes
 
@@ -102,7 +102,7 @@ Practice for 7 minutes. Submit your prompt and the concept answer on your own pa
 
 ## Slide 26 — Check, discuss, improve
 
-Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the most effective way to prevent the AI from using dramatic tone or personal bias? Correct answer: Use strict negative constraints (e.g., "Absolutely do not use dramatic adjectives or personal analysis").. Never use model self-confidence as proof of correctness.
+Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Which statement about negative constraints ("Do not ...") is most accurate? Correct answer: They work best when specific (e.g., "do not use words like shocking or disaster") and paired with what to do instead, because vague bans leave the model guessing.. Never use model self-confidence as proof of correctness.
 
 ## Slide 27 — Interview-style prompting
 
@@ -118,7 +118,7 @@ Practice for 7 minutes. Submit your prompt and the concept answer on your own pa
 
 ## Slide 30 — Check, discuss, improve
 
-Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why is the "ask exactly one question at a time" rule important in an interview prompt? Correct answer: To prevent the AI from dumping 20 questions on you at once in a single message.. Never use model self-confidence as proof of correctness.
+Reserve 5 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: In an interview-style prompt, what is the main purpose of an explicit stopping condition (e.g., "after 3 matching accomplishments, say I have enough data and write the letter")? Correct answer: Without it, the model either keeps asking indefinitely or decides on its own when to stop; the condition makes the switch to writing predictable and checkable.. Never use model self-confidence as proof of correctness.
 
 ## Slide 31 — Roles, chaining, and self-evaluation
 
@@ -134,7 +134,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 34 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why should you specify exact metrics (like "Error Handling") in a self-critique prompt? Correct answer: If you just say "critique this", the AI won't know what angle to analyze from and will give generic feedback.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: In the pitch-email chain, why send the self-critique as a separate turn instead of putting draft, critique, and rewrite instructions into one prompt? Correct answer: In one prompt the model tends to skip or fake the critique and jump to a polished answer; separate turns let you inspect each step and force the rewrite to use the listed flaws.. Never use model self-confidence as proof of correctness.
 
 ## Slide 35 — Capstone: evidence over impressions
 
@@ -150,7 +150,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 38 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: What is the best evidence that a revision improves reliability? Correct answer: It improves results on a consistent test set, including an unseen edge case.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: You revised your classifier prompt and it now labels all 4 test inputs correctly (the baseline got 3/4). What is the strongest justified conclusion? Correct answer: The revision is promising; rerun both versions on the same fixed tests plus new unseen edge cases (e.g., an injection attempt) and keep the failures before claiming it is more reliable.. Never use model self-confidence as proof of correctness.
 
 ## Slide 39 — Common failures → useful repairs
 
