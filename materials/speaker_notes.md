@@ -50,7 +50,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 13 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: In a few-shot prompt for the pharmacy reviews, which design most reliably makes the model return ONLY [FLAG_PII] for a review containing a phone number? Correct answer: Include an example where a review with a phone number maps to exactly "[FLAG_PII]" and nothing else, keeping the same input/output format across all examples.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Why does starting a prompt with "You are a Senior Cloud Solutions Architect..." usually produce a better technical answer than asking the same question with no role? Correct answer: Because the role is a statistical condition on next-token prediction: it pushes the model toward domain vocabulary, an expert's priorities, and implicit expectations like a professional tone, without spelling each one out. Never use model self-confidence as proof of correctness.
 
 ## Slide 14 — Chain-of-thought (CoT): Multi-step Debugging
 
@@ -134,7 +134,7 @@ Practice for 10 minutes. Submit your prompt and the concept answer on your own p
 
 ## Slide 34 — Check, discuss, improve
 
-Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: In the pitch-email chain, why send the self-critique as a separate turn instead of putting draft, critique, and rewrite instructions into one prompt? Correct answer: In one prompt the model tends to skip or fake the critique and jump to a polished answer; separate turns let you inspect each step and force the rewrite to use the listed flaws.. Never use model self-confidence as proof of correctness.
+Reserve 6 minutes for feedback, retries, and a short discussion. Use the task-specific maximum points: Lab 1 uses 20/20/20/40; other labs use 25 each. Ask: Your team sends the same 40-page contract to the model many times a day, each time with a different question. Which prompt layout is best, and why? Correct answer: Contract first inside <documents> tags, question last: the instruction sits right before generation where attention is strongest, and the unchanged contract forms a static prefix that can be cached across requests. Never use model self-confidence as proof of correctness.
 
 ## Slide 35 — Capstone: evidence over impressions
 

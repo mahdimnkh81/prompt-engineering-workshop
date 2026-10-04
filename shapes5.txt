@@ -1,0 +1,32 @@
+Shape 0: TextBox 1
+  Text: 'Foundation: How LLMs "Think"'
+Shape 1: Rectangle 2
+  Text: ''
+Shape 2: TextBox 3
+  Text: '🧠  Next-Token Prediction (intuition only)'
+Shape 3: TextBox 4
+  Text: '\n•  The model predicts the next token (word or sub'
+Shape 4: TextBox 5
+  Text: '🎯  Steering vs. Commanding'
+Shape 5: TextBox 6
+  Text: '•  Commanding: "Summarize this." → Model chooses l'
+Shape 6: Rounded Rectangle 7
+  Text: ''
+Shape 7: TextBox 8
+  Text: '❌  Commanding'
+Shape 8: Rounded Rectangle 9
+  Text: '"Write an email."'
+Shape 9: TextBox 10
+  Text: '→ Model picks everything: length, style, focus'
+Shape 10: Rounded Rectangle 11
+  Text: ''
+Shape 11: TextBox 12
+  Text: '✅  Steering'
+Shape 12: Rounded Rectangle 13
+  Text: '"You are replying to a client who\x0basked for a proj'
+Shape 13: TextBox 14
+  Text: '→ You control: role, task, format, tone, constrain'
+Shape 14: Rounded Rectangle 15
+  Text: ''
+Shape 15: TextBox 16
+  Text: '💡  Key Takeaway\nSteering (role, audience, format, '

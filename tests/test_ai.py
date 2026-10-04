@@ -116,7 +116,7 @@ def test_english_curriculum():
 def test_instructor_answer_key_access(accounts):
     from instructor_answers import get_answer
     _,tokens=accounts
-    for task_id in range(1,9):
+    for task_id in range(1, len(TASKS)+1):
         answer=get_answer(tokens['instructor'],task_id)
         assert len(answer['prompt'])>100
         assert answer['answer']==TASKS[task_id-1]['options'][TASKS[task_id-1]['answer']]

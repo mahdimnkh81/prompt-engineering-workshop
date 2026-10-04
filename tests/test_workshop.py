@@ -47,8 +47,8 @@ def test_all_labs_complete(accounts,monkeypatch):
     _,t=accounts;p=t['participant01'];admin=t['instructor']
     for task,prompt in zip(TASKS,ANSWERS):
         storage.submit_prompt(p,task['id'],prompt,task['answer'])
-    assert storage.roster(admin)[0]['passed']==8
-    assert len(storage.attempts(p))==8
+    assert storage.roster(admin)[0]['passed']==len(TASKS)
+    assert len(storage.attempts(p))==len(TASKS)
 
 def test_streamlit_login_and_dashboard(accounts,monkeypatch):
     from streamlit.testing.v1 import AppTest

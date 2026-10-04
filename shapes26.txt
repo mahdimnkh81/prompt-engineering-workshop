@@ -1,0 +1,28 @@
+Shape 0: Rounded Rectangle 1
+  Text: '🧪 Exercise 8'
+Shape 1: TextBox 2
+  Text: 'Lab 8: Reusable Classifier'
+Shape 2: Rectangle 3
+  Text: ''
+Shape 3: Rounded Rectangle 4
+  Text: ''
+Shape 4: TextBox 5
+  Text: '📋  Your Task'
+Shape 5: Rounded Rectangle 6
+  Text: 'Write a reusable classifier prompt for:\x0b  Auth / E'
+Shape 6: Rounded Rectangle 7
+  Text: ''
+Shape 7: TextBox 8
+  Text: '📊  Scoring Rubric'
+Shape 8: TextBox 9
+  Text: '\nLabels + examples + ambiguity policy (25)\nAll 4 t'
+Shape 9: Rounded Rectangle 10
+  Text: ''
+Shape 10: TextBox 11
+  Text: '⏱  7 minutes'
+Shape 11: TextBox 12
+  Text: '🎯  Pass: ≥ 70/100'
+Shape 12: TextBox 13
+  Text: '💡  Write the prompt, not the output!'
+Shape 13: TextBox 14
+  Text: 'Submit your prompt + concept answer in the Prompt '

@@ -1,0 +1,48 @@
+Shape 0: TextBox 1
+  Text: 'What Is Prompt Engineering?'
+Shape 1: Rectangle 2
+  Text: ''
+Shape 2: TextBox 3
+  Text: 'Programming in natural language — you define the t'
+Shape 3: Rounded Rectangle 4
+  Text: ''
+Shape 4: TextBox 5
+  Text: '⚠️  Vague'
+Shape 5: Rounded Rectangle 6
+  Text: '"Help with my essay."'
+Shape 6: TextBox 7
+  Text: "→ Model doesn't know subject, length, or style"
+Shape 7: Rounded Rectangle 8
+  Text: ''
+Shape 8: TextBox 9
+  Text: '✅  Specific'
+Shape 9: Rounded Rectangle 10
+  Text: '"You are a tutor. Help me improve the\x0bthesis of th'
+Shape 10: TextBox 11
+  Text: '→ Model can actually help with precision'
+Shape 11: TextBox 12
+  Text: 'Who Benefits?'
+Shape 12: Rounded Rectangle 13
+  Text: ''
+Shape 13: TextBox 14
+  Text: '💻  Developers'
+Shape 14: TextBox 15
+  Text: 'Code gen, debugging, docs, refactors'
+Shape 15: Rounded Rectangle 16
+  Text: ''
+Shape 16: TextBox 17
+  Text: '📣  Marketers'
+Shape 17: TextBox 18
+  Text: 'Copy, ads, emails, A/B ideas'
+Shape 18: Rounded Rectangle 19
+  Text: ''
+Shape 19: TextBox 20
+  Text: '🔬  Researchers'
+Shape 20: TextBox 21
+  Text: 'Summarization, lit review, brainstorming'
+Shape 21: Rounded Rectangle 22
+  Text: ''
+Shape 22: TextBox 23
+  Text: '👤  Everyone'
+Shape 23: TextBox 24
+  Text: 'Writing, planning, learning, decisions'

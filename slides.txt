@@ -1,0 +1,32 @@
+Slide 0: 
+Slide 1: 
+Slide 2: The Same Model. Two Completely Different Results.
+Slide 3: 
+Slide 4: What Is Prompt Engineering?
+Slide 5: Foundation: How LLMs "Think"
+Slide 6: 3-Hour Workshop Agenda
+Slide 7: Core Techniques — Your Prompt Engineering Toolkit
+Slide 8: Lab 1
+Slide 9: Lab 1
+Slide 10: 🧪 Exercise 1
+Slide 11: Lab 2
+Slide 12: 🧪 Exercise 2
+Slide 13: Lab 3
+Slide 14: 🧪 Exercise 3
+Slide 15: Lab 4
+Slide 16: 🧪 Exercise 4
+Slide 17: Lab 5
+Slide 18: 🧪 Exercise 5
+Slide 19: Lab 6
+Slide 20: 🧪 Exercise 6
+Slide 21: Lab 7
+Slide 22: Lab 7
+Slide 23: 🧪 Exercise 7
+Slide 24: Lab 8
+Slide 25: 🧪 Exercise 8
+Slide 26: Advanced Strategies
+Slide 27: Common Mistakes & How to Fix Them
+Slide 28: Real-World Use Cases
+Slide 29: Toolkit & Resources
+Slide 30: Key Takeaways
+Slide 31: 

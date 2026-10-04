@@ -1,0 +1,67 @@
+--- Slide 15 ---
+Lab 4
+---
+Structured Output: Relational JSON
+---
+
+---
+📖  Concept: Structured Output
+---
+
+Ask explicitly for JSON, tables, XML, markdown
+Visual templates enforce strict output formats
+Define foreign keys in JSON shapes
+Machine-readable output you can validate
+---
+📝  Prompt Examples
+---
+
+---
+❌  Without technique
+---
+Read the text below and give me a JSON of the employees and their departments.
+---
+
+---
+✅  With technique
+---
+
+Extract the organizational data from the text. Respond with valid JSON ONLY. Use the exact relational schema below, using dept_id as a foreign key to link employees to their departments:{ 
+"departments": [ { "dept_id": "d1", "name": "..." } ],
+ "employees": [ { "emp_id": "e1", "name": "...", "department_id": "d1" } ] 
+}
+
+---
+--- Slide 16 ---
+🧪 Exercise 4
+---
+Lab 4: Relational JSON Shape
+---
+
+---
+
+---
+📋  Your Task
+---
+Meeting transcript: "Ali, prepare the financialreport by tomorrow. Sara, set up a meeting withthe marketing team."Backend needs relational JSON:  • "users" array and "tasks" array SEPARATE  • Tasks linked to users via foreign key IDYou MUST draw the JSON skeleton in your promptshowing how IDs connect.
+---
+
+---
+📊  Scoring Rubric
+---
+
+Visual JSON Skeleton (25): explicit template
+Strict Key Definition (25): dictates all keys
+Linking Logic (30): userId ↔ assignedTo
+Output Restriction (20): no extra text
+---
+
+---
+⏱  20 minutes
+---
+🎯  Pass: ≥ 70/100
+---
+💡  Write the prompt, not the output!
+---
+Submit your prompt + concept answer in the Prompt Lab app for AI evaluation.
+---

@@ -1,0 +1,7 @@
+Slide 11 (idx 10): ['🧪 Exercise 1', 'Lab 1: Python Hiring on LinkedIn']
+Slide 12 (idx 11): ['Lab 2', 'Few-Shot Examples: Teaching by Pattern']
+Slide 13 (idx 12): ['🧪 Exercise 2', 'Lab 2: Content Moderation & PII']
+Slide 14 (idx 13): ['Lab 3', 'Chain-of-Thought: Step-by-Step Reasoning']
+Slide 15 (idx 14): ['🧪 Exercise 3', 'Lab 3: COT']
+Slide 16 (idx 15): ['Lab 4', 'Structured Output & XML Tags']
+Slide 17 (idx 16): ['🧪 Exercise 4', 'Lab 4: Structured Output & XML Tags']

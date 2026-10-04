@@ -1,0 +1,36 @@
+Shape 0: Rounded Rectangle 1
+  Text: 'Lab 4'
+  Left: 731520, Top: 320040, Width: 914400, Height: 502920
+Shape 1: TextBox 2
+  Text: 'Structured Output & XML Tags'
+  Left: 1828800, Top: 320040, Width: 9144000, Height: 369332
+Shape 2: Rectangle 3
+  Text: ''
+  Left: 731520, Top: 960120, Width: 3657600, Height: 50800
+Shape 3: TextBox 4
+  Text: '📖  Concept: Structured Output'
+  Left: 731520, Top: 1188720, Width: 5029200, Height: 457200
+Shape 4: TextBox 5
+  Text: 'Clear Separation of Instructions and Inputs/Variab'
+  Left: 595042, Top: 1763435, Width: 5029200, Height: 2031325
+Shape 5: TextBox 6
+  Text: '📝  Prompt Examples'
+  Left: 6217920, Top: 1188720, Width: 5029200, Height: 365760
+Shape 6: Rounded Rectangle 7
+  Text: ''
+  Left: 6217920, Top: 1691640, Width: 5029200, Height: 1828800
+Shape 7: TextBox 8
+  Text: '❌  Without technique'
+  Left: 6400800, Top: 1737360, Width: 4663440, Height: 320040
+Shape 8: Rounded Rectangle 9
+  Text: 'Extract the users and tasks from this meeting tran'
+  Left: 6400800, Top: 2103120, Width: 4663440, Height: 1188720
+Shape 9: Rounded Rectangle 10
+  Text: ''
+  Left: 6217920, Top: 3749039, Width: 5029200, Height: 2560320
+Shape 10: TextBox 11
+  Text: '✅  With technique'
+  Left: 6400800, Top: 3794760, Width: 4663440, Height: 320040
+Shape 11: Rounded Rectangle 12
+  Text: '<instructions>\nExtract users and tasks from <trans'
+  Left: 6400800, Top: 4160520, Width: 4663440, Height: 1920240

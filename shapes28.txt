@@ -1,0 +1,81 @@
+Shape 0: TextBox 1
+  Text: 'Common Mistakes & How to Fix Them'
+  L: 731520, T: 365760, W: 10058400, H: 640080
+Shape 1: Rectangle 2
+  Text: ''
+  L: 731520, T: 1005840, W: 4572000, H: 50800
+Shape 2: Rounded Rectangle 3
+  Text: ''
+  L: 731520, T: 1463040, W: 10698480, H: 868680
+Shape 3: TextBox 4
+  Text: '⚠️'
+  L: 914400, T: 1513840, W: 457200, H: 365760
+Shape 4: TextBox 5
+  Text: 'Too Vague'
+  L: 1463040, T: 1513840, W: 2011680, H: 365760
+Shape 5: TextBox 6
+  Text: 'Generic or irrelevant output'
+  L: 3657600, T: 1513840, W: 3200400, H: 365760
+Shape 6: TextBox 7
+  Text: '✅ Add role, audience, tone, format, length'
+  L: 7132320, T: 1513840, W: 4114800, H: 731520
+Shape 7: Rounded Rectangle 8
+  Text: ''
+  L: 731520, T: 2468880, W: 10698480, H: 868680
+Shape 8: TextBox 9
+  Text: '📦'
+  L: 914400, T: 2519680, W: 457200, H: 365760
+Shape 9: TextBox 10
+  Text: 'Too Many Tasks'
+  L: 1463040, T: 2519680, W: 2011680, H: 365760
+Shape 10: TextBox 11
+  Text: 'Model drops or mixes tasks'
+  L: 3657600, T: 2519680, W: 3200400, H: 365760
+Shape 11: TextBox 12
+  Text: '✅ Split into steps / separate prompts'
+  L: 7132320, T: 2519680, W: 4114800, H: 731520
+Shape 12: Rounded Rectangle 13
+  Text: ''
+  L: 731520, T: 3474720, W: 10698480, H: 868680
+Shape 13: TextBox 14
+  Text: '📋'
+  L: 914400, T: 3525520, W: 457200, H: 365760
+Shape 14: TextBox 15
+  Text: 'No Examples'
+  L: 1463040, T: 3525520, W: 2011680, H: 365760
+Shape 15: TextBox 16
+  Text: 'Wrong format or style'
+  L: 3657600, T: 3525520, W: 3200400, H: 365760
+Shape 16: TextBox 17
+  Text: '✅ Add 1–3 few-shot examples'
+  L: 7132320, T: 3525520, W: 4114800, H: 731520
+Shape 17: Rounded Rectangle 18
+  Text: ''
+  L: 731520, T: 4480560, W: 10698480, H: 868680
+Shape 18: TextBox 19
+  Text: '📊'
+  L: 914400, T: 4531360, W: 457200, H: 365760
+Shape 19: TextBox 20
+  Text: 'Ignoring Format'
+  L: 1463040, T: 4531360, W: 2011680, H: 365760
+Shape 20: TextBox 21
+  Text: 'Hard to parse or reuse'
+  L: 3657600, T: 4531360, W: 3200400, H: 365760
+Shape 21: TextBox 22
+  Text: '✅ Request structure: "JSON with keys X, Y"'
+  L: 7132320, T: 4531360, W: 4114800, H: 731520
+Shape 22: Rounded Rectangle 23
+  Text: ''
+  L: 731520, T: 5486400, W: 10698480, H: 868680
+Shape 23: TextBox 24
+  Text: '🧠'
+  L: 914400, T: 5537200, W: 457200, H: 365760
+Shape 24: TextBox 25
+  Text: 'Assuming Memory'
+  L: 1463040, T: 5537200, W: 2011680, H: 365760
+Shape 25: TextBox 26
+  Text: 'Model "forgets" earlier'
+  L: 3657600, T: 5537200, W: 3200400, H: 365760
+Shape 26: TextBox 27
+  Text: '✅ Repeat key facts if thread is long'
+  L: 7132320, T: 5537200, W: 4114800, H: 731520

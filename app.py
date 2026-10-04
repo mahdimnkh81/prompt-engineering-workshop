@@ -13,8 +13,18 @@ if not storage.DB.exists():
     st.error('Initialize the workshop first: python storage.py');st.stop()
 
 if 'token' not in st.session_state:
+    # Restore the session after a browser refresh or reconnect: the server-validated
+    # session token is kept in the URL (?s=...). It still expires after 12 hours or on sign-out.
+    saved=st.query_params.get('s')
+    if saved:
+        try:
+            storage.identity(saved);st.session_state.token=saved
+        except PermissionError:
+            del st.query_params['s']
+
+if 'token' not in st.session_state:
     st.title('Make your prompts work.')
-    st.write('Eight labs. Your own workspace. Feedback before the next challenge.')
+    st.write(f'{len(TASKS)} labs. Your own workspace. Feedback before the next challenge.')
     preset=st.query_params.get('participant','')
     with st.form('login'):
         username=st.text_input('Username',value=preset)
@@ -24,20 +34,23 @@ if 'token' not in st.session_state:
         if time.time()<st.session_state.get('login_after',0):st.error('Please wait a moment before trying again.')
         else:
             token=storage.login(username.strip(),password)
-            if token:st.session_state.token=token;st.rerun()
+            if token:st.session_state.token=token;st.query_params['s']=token;st.rerun()
             else:st.session_state.login_after=time.time()+2;st.error('Username or password is incorrect.')
-    st.info('Use the individual credentials supplied by your instructor. Your page URL does not grant access to another account.')
+    st.info('Use the individual credentials supplied by your instructor. After signing in, do not share your page URL: it keeps you signed in on refresh.')
     st.stop()
 
 try:user=storage.identity(st.session_state.token)
 except PermissionError:
-    del st.session_state.token;st.rerun()
+    del st.session_state.token
+    if 's' in st.query_params:del st.query_params['s']
+    st.rerun()
 token=st.session_state.token
+if st.query_params.get('s')!=token:st.query_params['s']=token
 with st.sidebar:
     st.title('Prompt Lab')
     st.write(user['id'])
     if st.button('Sign out'):
-        storage.logout(token);st.session_state.clear();st.rerun()
+        storage.logout(token);st.session_state.clear();st.query_params.clear();st.rerun()
     st.caption('AI prompt assessment: four task-specific weighted criteria. Pass with 70/100 and a correct concept answer.')
     with st.expander('Three-hour agenda'):
         for timing,minutes,title in AGENDA:st.write(f'{timing} · {title}')
@@ -51,14 +64,14 @@ if user['role']=='instructor':
     if not cfg['key']:st.warning('Set AVALAI_API_KEY in the server environment or .streamlit/secrets.toml.')
     roster=storage.roster(token); pending=[r for r in rows if r['status']=='pending']
     a,b,c=st.columns(3)
-    a.metric('Participants',len(roster));b.metric('Awaiting review',len(pending));c.metric('Completed all labs',sum(r['passed']==8 for r in roster))
+    a.metric('Participants',len(roster));b.metric('Awaiting review',len(pending));c.metric('Completed all labs',sum(r['passed']==len(TASKS) for r in roster))
     if st.button('Refresh dashboard'):st.rerun()
     progress,answer_tab,history=st.tabs(['Class progress','Instructor answer key','All attempts & export'])
     with answer_tab:
         from instructor_answers import get_answer
         st.subheader('Instructor answer key')
         st.info('These are reference prompts, not the only correct answers or guaranteed AI scores. Accept alternative prompts that meet the rubric. Expected outputs are teaching references; participants submit their prompt and concept answer.')
-        answer_id=st.selectbox('Reference lab',range(1,9),format_func=lambda n:f"Lab {n}: {TASKS[n-1]['title']}",key='answer_key_lab')
+        answer_id=st.selectbox('Reference lab',range(1,len(TASKS)+1),format_func=lambda n:f"Lab {n}: {TASKS[n-1]['title']}",key='answer_key_lab')
         reference=get_answer(token,answer_id)
         st.markdown('**Reference submission — paste this into Your prompt**')
         st.caption('This is the instruction the participant should write, not the answer produced by following that instruction.')
@@ -103,8 +116,8 @@ if user['role']=='instructor':
 else:
     passed={r['task_id'] for r in rows if r['status']=='passed'}
     st.title(f"{user['id']} · Your workspace")
-    st.progress(len(passed)/8,text=f'{len(passed)} of 8 labs passed')
-    if len(passed)==8:st.success('Workshop complete! Save your prompt journal and apply one technique to your work this week.')
+    st.progress(len(passed)/len(TASKS),text=f'{len(passed)} of {len(TASKS)} labs passed')
+    if len(passed)==len(TASKS):st.success('Workshop complete! Save your prompt journal and apply one technique to your work this week.')
     available=[t['id'] for t in TASKS if set(range(1,t['id'])).issubset(passed)]
     with st.sidebar:
         for t in TASKS:st.write(('✓' if t['id'] in passed else '○' if t['id'] in available else '🔒')+f" {t['id']}. {t['title']}")
@@ -118,6 +131,8 @@ else:
         <strong>🇮🇷 ترجمه سناریو:</strong><br><br>{task['ai_brief_fa']}
         </div>"""
         st.markdown(html_fa, unsafe_allow_html=True)
+    if 'transcript' in task:
+        st.code(task['transcript'], language='text')
     draft=storage.get_draft(token,task_id)
     with st.form(f'lab_{task_id}'):
         prompt=st.text_area('Your prompt',value=draft.get('prompt',''),height=280,max_chars=20000,help='Submit instructions for the model, not the final answer. For example: Write an empathetic support reply under 100 words using the following facts…')

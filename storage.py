@@ -73,7 +73,7 @@ def passed(c,user):
 def require_participant(token,task_id,c):
     user=identity(token)
     if user['role']!='participant':raise PermissionError('Participant access required.')
-    if task_id not in range(1,9):raise ValueError('Unknown task.')
+    if task_id not in range(1,len(TASKS)+1):raise ValueError('Unknown task.')
     if not set(range(1,task_id)).issubset(passed(c,user['id'])):raise PermissionError('Pass all earlier tasks first.')
     return user['id']
 
